@@ -1,0 +1,22 @@
+{
+    "reminders": [
+        {
+            "days": {
+                "monday": true, 
+                "tuesday": false, 
+                "wednesday": true, 
+                "thursday": false, 
+                "friday": true,
+                "saturday": false,
+                "sunday": false
+            }, 
+            "times": {
+                "am": false,
+                "noon": false,
+                "pm": true
+            }, 
+            "supplement": "L-theanine",
+            "id":1
+        }
+    ]
+}
