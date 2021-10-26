@@ -33,17 +33,11 @@ function App() {
         <Route path="/list/new">
           <AddNew setReminders={setReminders}/>
         </Route>
-        <Route path="/list/:id">
-          
-        </Route>
         <Route path="/list/:id/edit">
-          <EditReminder />
-        </Route>
-        <Route path="/list/:id/delete">
-          
+          <EditReminder setReminders={setReminders}/>
         </Route>
         <Route exact path={["/", "/list"]}>
-          <ReminderList reminders={reminders}/>
+          <ReminderList setReminders={setReminders} reminders={reminders}/>
         </Route>
         <Route>
           <p>404</p>

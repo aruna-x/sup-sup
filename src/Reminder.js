@@ -1,5 +1,6 @@
+import {Link} from "react-router-dom"
 
-function Reminder({reminder: {supplement, days, times}}) {
+function Reminder({reminder: {supplement, days, times, id}, setReminders}) {
     console.log();
 
     const displayDays = Object.entries(days).filter((array)=>array[1]).map(grabLetters).toString().replaceAll(",", ", ").toUpperCase()
@@ -24,13 +25,20 @@ function Reminder({reminder: {supplement, days, times}}) {
         return convertedTime;
     }
 
+    function handleDelete() {
+        fetch(`http://localhost:4000/reminders/${id}`, {
+            method: "DELETE"
+        })
+        .then(() => setReminders(current => current.filter((reminder) => (reminder.id !== id))))
+    }
+
     return (
         <tr>
             <td>{supplement}</td>
             <td>{displayDays}</td>
             <td>{convertTime(times)}</td>
-            <td><button>🖊️</button></td>
-            <td><button>❌</button></td>
+            <td><Link to={`/list/${id}/edit`}><button>🖊️</button></Link></td>
+            <td><button onClick={handleDelete}>❌</button></td>
         </tr>
     )
 }

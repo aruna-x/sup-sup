@@ -7,26 +7,30 @@ function ReminderCalendar({reminders}) {
     const [selectedDay, setSelectedDay] = useState(new Date());
     console.log(selectedDay)
 
-    
-
     const displayReminders = reminders.filter((reminder) => {
         const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         const today = days[selectedDay.getDay()];
-        if (reminder.startDate > formatDate(selectedDay).toString()) {
+        console.log('Format Date: '+formatDate(selectedDay).toString())
+        console.log("This should be true", reminder.startDate.toString() > formatDate(selectedDay).toString())
+        if (reminder.startDate.toString() > formatDate(selectedDay).toString()) {
             return false;
         }
-        for (let i=0; i<reminder.days.length; i++) {
-            if (reminder.days[i] === today) return true;
+        const datesArray = Object.entries(reminder.days).filter(day=> day[1]).map(day=>day[0]);
+        console.log('dates array'+datesArray)
+
+        for (let i=0; i<datesArray.length; i++) {
+            if (datesArray[i] === today) return true;
         }
         return false;
     });
+    console.log(displayReminders)
 
- return (
+return (
     <>
         <Calendar value={selectedDay} onChange={setSelectedDay} />
         <ReminderList reminders={displayReminders} />
     </>
- )
+)
 }
 
 function formatDate(dateObj) {
