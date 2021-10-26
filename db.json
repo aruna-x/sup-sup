@@ -1,13 +1,19 @@
 {
   "reminders": [
     {
-      "supplement": "sdf",
-      "days": [
-        "Tuesday"
-      ],
+      "supplement": "2222222",
+      "days": {
+        "Monday": true,
+        "Tuesday": false,
+        "Wednesday": false,
+        "Thursday": false,
+        "Friday": false,
+        "Saturday": false,
+        "Sunday": false
+      },
       "times": "10:00",
       "startDate": "2021/10/26",
-      "id": 7
+      "id": 1
     }
   ]
 }

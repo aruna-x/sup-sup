@@ -1,9 +1,11 @@
 
 function Reminder({reminder: {supplement, days, times}}) {
+    console.log();
 
-    const displayDays = days.map(grabLetters).toString().replaceAll(",", ", ").toUpperCase()
+    const displayDays = Object.entries(days).filter((array)=>array[1]).map(grabLetters).toString().replaceAll(",", ", ").toUpperCase()
 
-    function grabLetters(day) {
+    function grabLetters(array) {
+        const day = array[0];
         switch (day) {
             case "Thursday":
             case "Tuesday":

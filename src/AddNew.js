@@ -4,23 +4,37 @@ import TimePicker from 'react-time-picker';
 function AddNew({setReminders}) {
     const [formData, setFormData] = useState({
         supplement: "",
-        days: [],
+        days: {
+            Monday: false,
+            Tuesday: false,
+            Wednesday: false,
+            Thursday: false,
+            Friday: false,
+            Saturday: false,
+            Sunday: false
+        },
         times: "10:00",
     })
 
     function handleChange(e) {
-        const key = e.target === undefined ? "times" : e.target.name;
-        const value = e.target === undefined ? e : e.target.value;
-        switch (key) {
-            case "times":
-            case "supplement":
-                setFormData({...formData, [key]: value});
-                break;
-            case "day":
-                setFormData({...formData, days: [...formData.days, value]});
-                break;
-            default:
-                break;
+        let key, value;
+        // Times
+        if (e.target === undefined) {
+            key = "times";
+            value = e;
+            setFormData({...formData, [key]: value});
+        } 
+        // Supplement
+        else if (e.target.name === "supplement") {
+            key = e.target.name;
+            value = e.target.value;
+            setFormData({...formData, [key]: value});
+        }
+        // Days
+        else {
+            key = "days";
+            value = {[e.target.name]: true};
+            setFormData({...formData, [key]: {...formData.days, ...value}});
         }
     }
 
@@ -44,7 +58,15 @@ function AddNew({setReminders}) {
             setReminders((current)=> [...current, data])
             setFormData({
                 supplement: "",
-                days: [],
+                days: {
+                    Monday: false,
+                    Tuesday: false,
+                    Wednesday: false,
+                    Thursday: false,
+                    Friday: false,
+                    Saturday: false,
+                    Sunday: false
+                },
                 times: "10:00"
             })
         })
@@ -53,13 +75,13 @@ function AddNew({setReminders}) {
     return (
         <form onSubmit={handleSubmit}>
             <label> Supplement: <input name="supplement" type="text" value={formData.supplement} onChange={handleChange}></input></label>
-            <label> <input name="day" type="checkbox" value="Monday" onChange={handleChange}></input> Monday</label>
-            <label> <input name="day" type="checkbox" value="Tuesday" onChange={handleChange}></input> Tuesday</label>
-            <label> <input name="day" type="checkbox" value="Wednesday" onChange={handleChange}></input> Wednesday</label>
-            <label> <input name="day" type="checkbox" value="Thursday" onChange={handleChange}></input> Thursday</label>
-            <label> <input name="day" type="checkbox" value="Friday" onChange={handleChange}></input> Friday</label>
-            <label> <input name="day" type="checkbox" value="Saturday" onChange={handleChange}></input> Saturday</label>
-            <label> <input name="day" type="checkbox" value="Sunday" onChange={handleChange}></input> Sunday</label>
+            <label> <input name="Monday" type="checkbox" checked={formData.days.Monday} onChange={handleChange}></input> Monday</label>
+            <label> <input name="Tuesday" type="checkbox" checked={formData.days.Tuesday} onChange={handleChange}></input> Tuesday</label>
+            <label> <input name="Wednesday" type="checkbox" checked={formData.days.Wednesday} onChange={handleChange}></input> Wednesday</label>
+            <label> <input name="Thursday" type="checkbox" checked={formData.days.Thursday} onChange={handleChange}></input> Thursday</label>
+            <label> <input name="Friday" type="checkbox" checked={formData.days.Friday} onChange={handleChange}></input> Friday</label>
+            <label> <input name="Saturday" type="checkbox" checked={formData.days.Saturday} onChange={handleChange}></input> Saturday</label>
+            <label> <input name="Sunday" type="checkbox" checked={formData.days.Sunday} onChange={handleChange}></input> Sunday</label>
             <TimePicker id="time" onChange={handleChange} value={formData.times} />
             <button type="submit">Submit</button>
         </form>
