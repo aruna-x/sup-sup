@@ -4,7 +4,7 @@ import Header from "./Header.js";
 import NavBar from "./NavBar.js";
 import EditReminder from './EditReminder.js';
 import ReminderList from './ReminderList.js';
-import Calendar from './Calendar.js';
+import ReminderCalendar from './ReminderCalendar.js';
 import AddNew from './AddNew.js';
 
 
@@ -28,10 +28,10 @@ function App() {
       <NavBar />
       <Switch>
         <Route path="/calendar">
-          <Calendar />
+          <ReminderCalendar reminders={reminders} />
         </Route>
         <Route path="/list/new">
-          <AddNew />
+          <AddNew setReminders={setReminders}/>
         </Route>
         <Route path="/list/:id">
           

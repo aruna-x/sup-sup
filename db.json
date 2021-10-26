@@ -1,10 +1,13 @@
 {
-    "reminders": [
-        {
-            "days": ["Monday", "Wednesday", "Friday", "Saturday"], 
-            "times": "10:00", 
-            "supplement": "L-theanine",
-            "id":1
-        }
-    ]
+  "reminders": [
+    {
+      "supplement": "sdf",
+      "days": [
+        "Tuesday"
+      ],
+      "times": "10:00",
+      "startDate": "2021/10/26",
+      "id": 7
+    }
+  ]
 }
