@@ -1,7 +1,7 @@
 
-function Reminder({reminder:{id, supplement, days, times}}) {
+function Reminder({reminder: {supplement, days, times}}) {
 
-    const displayDays = days.map(grabLetters).toString().replaceAll(",", "-").toUpperCase()
+    const displayDays = days.map(grabLetters).toString().replaceAll(",", ", ").toUpperCase()
 
     function grabLetters(day) {
         switch (day) {
@@ -15,13 +15,18 @@ function Reminder({reminder:{id, supplement, days, times}}) {
         }
     }
 
-    const displayTimes = times.toString().replaceAll(",", ", ")
+    function convertTime(timeToConvert) {
+        const hours = parseInt(timeToConvert.slice(0,2));
+        const minutes = parseInt(timeToConvert.slice(3));
+        const convertedTime = "" + ((hours > 12) ? hours - 12 : hours) + ((minutes < 10) ? ":0" : ":") + minutes + ((hours >= 12) ? " PM" : " AM");
+        return convertedTime;
+    }
 
     return (
         <tr>
             <td>{supplement}</td>
             <td>{displayDays}</td>
-            <td>{displayTimes}</td>
+            <td>{convertTime(times)}</td>
             <td><button>🖊️</button></td>
             <td><button>❌</button></td>
         </tr>
