@@ -1,7 +1,11 @@
 import Reminder from './Reminder.js'
 
-function ReminderList({reminders}) {
+function ReminderList({reminders, setReminders}) {
     const reminderItem = reminders.map(handleMap)
+    
+    function handleMap(reminder) {
+        return <Reminder setReminders={setReminders} key={reminder.id} reminder={reminder}/>
+    }
     return (
         <table>
             <thead>
@@ -18,9 +22,6 @@ function ReminderList({reminders}) {
     )
 }
 
-function handleMap(reminder) {
-    return <Reminder key={reminder.id} reminder={reminder}/>
-}
 
 export default ReminderList;
 

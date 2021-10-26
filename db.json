@@ -1,19 +1,49 @@
 {
   "reminders": [
     {
-      "supplement": "2222222",
+      "supplement": "steroids",
       "days": {
         "Monday": true,
         "Tuesday": false,
+        "Wednesday": true,
+        "Thursday": false,
+        "Friday": false,
+        "Saturday": false,
+        "Sunday": false
+      },
+      "times": "10:30",
+      "startDate": "2021/10/26",
+      "id": 1
+    },
+    {
+      "supplement": "yes",
+      "days": {
+        "Monday": false,
+        "Tuesday": true,
         "Wednesday": false,
         "Thursday": false,
         "Friday": false,
         "Saturday": false,
         "Sunday": false
       },
-      "times": "10:00",
+      "times": "10:09",
       "startDate": "2021/10/26",
-      "id": 1
+      "id": 2
+    },
+    {
+      "supplement": "isjflsidjfilasdjlsdj",
+      "days": {
+        "Monday": false,
+        "Tuesday": false,
+        "Wednesday": true,
+        "Thursday": false,
+        "Friday": false,
+        "Saturday": false,
+        "Sunday": true
+      },
+      "times": "15:45",
+      "startDate": "2021/10/26",
+      "id": 3
     }
   ]
 }

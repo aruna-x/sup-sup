@@ -33,7 +33,7 @@ function AddNew({setReminders}) {
         // Days
         else {
             key = "days";
-            value = {[e.target.name]: true};
+            value = {[e.target.name]: e.target.checked};
             setFormData({...formData, [key]: {...formData.days, ...value}});
         }
     }
@@ -70,7 +70,7 @@ function AddNew({setReminders}) {
                 times: "10:00"
             })
         })
-    } 
+    }
     
     return (
         <form onSubmit={handleSubmit}>
