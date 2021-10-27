@@ -6,6 +6,7 @@ import EditReminder from './EditReminder.js';
 import ReminderList from './ReminderList.js';
 import ReminderCalendar from './ReminderCalendar.js';
 import AddNew from './AddNew.js';
+import styled from 'styled-components';
 
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
   console.log(reminders)
 
   return (
-    <>
+    <Page>
       <Header />
       <NavBar />
       <Switch>
@@ -43,11 +44,13 @@ function App() {
           <p>404</p>
         </Route>
       </Switch>
-    </>
+    </Page>
   );
 }
 
 export default App;
+
+const Page = styled.div``
 
 // import
 // NavBar
