@@ -1,0 +1,17 @@
+.all {
+    animation: pulse 20s infinite;
+    width: 100%;
+    height: 100%;
+  }
+  
+  @keyframes pulse {
+    0% {
+      background-color: #ff7b00;
+    }
+    50% {
+      background-color: #ff5e00;
+    }
+    100% {
+        background-color: #ffc400;
+      }
+  }

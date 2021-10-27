@@ -1,4 +1,5 @@
 import {Link} from "react-router-dom"
+import styled from "styled-components";
 
 function Reminder({reminder: {supplement, days, times, id}, setReminders}) {
     console.log();
@@ -37,14 +38,23 @@ function Reminder({reminder: {supplement, days, times, id}, setReminders}) {
             <td>{supplement}</td>
             <td>{displayDays}</td>
             <td>{convertTime(times)}</td>
-            <td><Link to={`/list/${id}/edit`}><button>🖊️</button></Link></td>
-            <td><button onClick={handleDelete}>❌</button></td>
+            <td><Link to={`/list/${id}/edit`}><Button>🖊️</Button></Link></td>
+            <td><Button onClick={handleDelete}>❌</Button></td>
         </tr>
     )
 }
 
 
 export default Reminder;
+
+const Button = styled.button`
+    background-color: transparent;
+    color: inherit;
+	border: 1px solid black;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+`
 
 // each reminder will have a delete button.
 // ALSO: "edit" button
