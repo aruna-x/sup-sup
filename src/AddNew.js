@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import TimePicker from 'react-time-picker';
 
-function AddNew({setReminders}) {
+function AddNew({setReminders, formatDate}) {
     const [formData, setFormData] = useState({
         supplement: "",
         days: {
@@ -42,10 +42,7 @@ function AddNew({setReminders}) {
         e.preventDefault()
         
         const dateObj = new Date();
-        const month = dateObj.getUTCMonth() + 1; //months from 1-12
-        const day = dateObj.getUTCDate();
-        const year = dateObj.getUTCFullYear();
-        const newdate = year + "/" + month + "/" + day;
+        const newdate = formatDate(dateObj);
 
         const postFormData = {...formData, startDate: newdate.toString()};
         fetch("http://localhost:4000/reminders", {

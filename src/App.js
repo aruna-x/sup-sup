@@ -11,14 +11,60 @@ import styled from 'styled-components';
 
 function App() {
 
-  const [reminders, setReminders] = useState([])
+  const [reminders, setReminders] = useState([]);
+  const [notification, setNotification] = useState(false);
+  setTimeout(() => {setNotification(!notification)}, 60000);
 
   useEffect(retrieveData,[])
-
   function retrieveData() {
     fetch("http://localhost:4000/reminders")
     .then(resp => resp.json())
     .then(setReminders)
+  }
+
+  useEffect(throwAlert, [notification])
+  function throwAlert() {
+    if (!notification) return;
+    else {
+      const today = new Date()
+      const currentTime = today.toString().slice(16,21);
+      const todayReminders = filterReminders(today);
+      const alertSupplements = todayReminders.filter(r => r.times === currentTime).map(r => r.supplement);
+      const supplements = alertSupplements.toString().replaceAll(',', ', ');
+      if (supplements !== "") {
+        const ping = new Audio('https://thevitiligocoach.com/ping.m4a');
+        ping.play();
+        setTimeout(() => {alert(`Sup! Time to take your ${supplements}.`);}, 1000);
+      }
+    }
+  }
+
+  // Grab all active sups for today
+  // Use set timeout to calculate current time every minute.
+  // if there is a match, alert for those supplements
+  // Make it make a sound
+
+  function filterReminders(selectedDay) {
+    return reminders.filter((reminder) => {
+        const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        const formattedSelectedDay = days[selectedDay.getDay()];
+        if (Date.parse(reminder.startDate) > Date.parse(formatDate(selectedDay).toString())) {
+            return false;
+        }
+        const datesArray = Object.entries(reminder.days).filter(day=> day[1]).map(day=>day[0]);
+
+        for (let i=0; i<datesArray.length; i++) {
+            if (datesArray[i] === formattedSelectedDay) return true;
+        }
+        return false;
+    })
+  }
+
+  function formatDate(dateObj) {
+    const month = dateObj.getUTCMonth() + 1; //months from 1-12
+    const day = dateObj.getUTCDate();
+    const year = dateObj.getUTCFullYear();
+    return year + "/" + month + "/" + day;
   }
 
   console.log(reminders)
@@ -27,12 +73,13 @@ function App() {
     <Page>
       <Header />
       <NavBar />
+      {/* <button onClick={()=>setNotification(!notification)}>show alert</button> */}
       <Switch>
         <Route path="/calendar">
-          <ReminderCalendar reminders={reminders} />
+          <ReminderCalendar filterReminders={filterReminders}/>
         </Route>
         <Route path="/list/new">
-          <AddNew setReminders={setReminders}/>
+          <AddNew setReminders={setReminders} formatDate={formatDate}/>
         </Route>
         <Route path="/list/:id/edit">
           <EditReminder setReminders={setReminders}/>
