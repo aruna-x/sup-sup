@@ -80,5 +80,3 @@ function EditReminder({setReminders}) {
 }
 
 export default EditReminder;
-
-// ROUTE

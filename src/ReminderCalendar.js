@@ -20,5 +20,3 @@ return (
 }
 
 export default ReminderCalendar;
-
-// ROUTE

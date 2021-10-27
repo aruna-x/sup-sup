@@ -41,6 +41,3 @@ const Table = styled.table`
         box-shadow: 2px 2px 8px 0px rgb(204, 102, 0);
     }
 `
-
-
-// ROUTE

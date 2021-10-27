@@ -39,11 +39,6 @@ function App() {
     }
   }
 
-  // Grab all active sups for today
-  // Use set timeout to calculate current time every minute.
-  // if there is a match, alert for those supplements
-  // Make it make a sound
-
   function filterReminders(selectedDay) {
     return reminders.filter((reminder) => {
         const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];

@@ -55,6 +55,3 @@ const Button = styled.button`
 	font: inherit;
 	cursor: pointer;
 `
-
-// each reminder will have a delete button.
-// ALSO: "edit" button

@@ -87,5 +87,3 @@ function AddNew({setReminders, formatDate}) {
 }
 
 export default AddNew;
-
-// ROUTE
