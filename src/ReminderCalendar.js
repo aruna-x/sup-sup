@@ -10,13 +10,10 @@ function ReminderCalendar({reminders}) {
     const displayReminders = reminders.filter((reminder) => {
         const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         const today = days[selectedDay.getDay()];
-        console.log('Format Date: '+formatDate(selectedDay).toString())
-        console.log("This should be true", reminder.startDate.toString() > formatDate(selectedDay).toString())
-        if (reminder.startDate.toString() > formatDate(selectedDay).toString()) {
+        if (Date.parse(reminder.startDate) > Date.parse(formatDate(selectedDay).toString())) {
             return false;
         }
         const datesArray = Object.entries(reminder.days).filter(day=> day[1]).map(day=>day[0]);
-        console.log('dates array'+datesArray)
 
         for (let i=0; i<datesArray.length; i++) {
             if (datesArray[i] === today) return true;
