@@ -11,9 +11,9 @@ function ReminderList({reminders, setReminders}) {
         <Table>
             <thead>
                 <tr>
-                    <th>Supplement</th>
-                    <th>Days</th>
-                    <th>Times</th>
+                    <th>SUPPLMENTS</th>
+                    <th>DAYS</th>
+                    <th>TIMES</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,16 +28,24 @@ export default ReminderList;
 
 const Table = styled.table`
     height: 200px;
+    padding-left: 40px;
+    padding-bottom: 20px;
     box-shadow: 4px 4px 8px 0px rgba(0,0,0,0.4);
-    background: rgb(255,171,0);
-    background: linear-gradient(0deg, rgba(255,171,0,1) 0%, rgba(255,220,0,1) 0%, rgba(255,169,0,1) 100%);
-    margin: auto;
+    background-color: rgb(245, 238,220);
+    border-radius: 2%;
+    margin: 50px auto 0px auto;
+    width: 55vw;
     font-size: 25px;
     font-family: 'Zen Kaku Gothic New', sans-serif;
     border-spacing: 0.7rem;
-    border: 1px solid black;
-    :hover {
-        background-color: orange;
-        box-shadow: 2px 2px 8px 0px rgb(204, 102, 0);
+
+    tr{
+        text-align: left;
+    }
+    thead{
+        height: 75px;
+    }
+    tbody>tr {
+        height: 30px;
     }
 `
