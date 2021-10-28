@@ -1,7 +1,11 @@
 import {useState} from 'react';
 import TimePicker from 'react-time-picker';
+import { useHistory } from "react-router-dom";
 
 function AddNew({setReminders, formatDate}) {
+
+    let history = useHistory();
+
     const [formData, setFormData] = useState({
         supplement: "",
         days: {
@@ -67,11 +71,12 @@ function AddNew({setReminders, formatDate}) {
                 times: "10:00"
             })
         })
+        .then(r => history.push("/"))
     }
     
     return (
         <form onSubmit={handleSubmit}>
-            <label> Supplement: <input name="supplement" type="text" value={formData.supplement} onChange={handleChange}></input></label>
+            <label> Supplement: <input name="supplement" type="text" value={formData.supplement} onChange={handleChange} required></input></label>
             <label> <input name="Monday" type="checkbox" checked={formData.days.Monday} onChange={handleChange}></input> Monday</label>
             <label> <input name="Tuesday" type="checkbox" checked={formData.days.Tuesday} onChange={handleChange}></input> Tuesday</label>
             <label> <input name="Wednesday" type="checkbox" checked={formData.days.Wednesday} onChange={handleChange}></input> Wednesday</label>

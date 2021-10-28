@@ -8,33 +8,37 @@ function ReminderList({reminders, setReminders}) {
         return <Reminder setReminders={setReminders} key={reminder.id} reminder={reminder}/>
     }
     return (
-        <Table>
-            <thead>
-                <tr>
-                    <th>SUPPLMENTS</th>
-                    <th>DAYS</th>
-                    <th>TIMES</th>
-                </tr>
-            </thead>
-            <tbody>
-            {reminderItem}
-            </tbody>
-        </Table>
+        <>
+            <Title>Reminders</Title>
+            <Table>
+                <thead>
+                    <tr>
+                        <th>SUPPLMENTS</th>
+                        <th>DAYS</th>
+                        <th>TIMES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {reminderItem}
+                </tbody>
+            </Table>
+    </>
     )
 }
 
 
 export default ReminderList;
 
+const Title = styled.h1`
+    text-align: center;
+`
+
 const Table = styled.table`
-    height: 200px;
-    padding-left: 40px;
+    min-height: 200px;
+    padding-left: 30px;
     padding-bottom: 20px;
-    box-shadow: 4px 4px 8px 0px rgba(0,0,0,0.4);
-    background-color: rgb(245, 238,220);
-    border-radius: 2%;
-    margin: 50px auto 0px auto;
-    width: 55vw;
+    margin: 0px auto 0px auto;
+    width: 50vw;
     font-size: 25px;
     font-family: 'Zen Kaku Gothic New', sans-serif;
     border-spacing: 0.7rem;

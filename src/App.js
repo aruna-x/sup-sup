@@ -72,18 +72,24 @@ function App() {
       <Style>
         <Switch>
           <Route path="/calendar">
-            <CalenderContainer>
+            <UpperSpace>
               <ReminderCalendar filterReminders={filterReminders}/>
-            </CalenderContainer>
+            </UpperSpace>
           </Route>
           <Route path="/list/new">
-            <AddNew setReminders={setReminders} formatDate={formatDate}/>
+            <UpperSpace>
+              <AddNew setReminders={setReminders} formatDate={formatDate}/>
+            </UpperSpace>
           </Route>
           <Route path="/list/:id/edit">
+            <UpperSpace>
             <EditReminder setReminders={setReminders}/>
+            </UpperSpace>
           </Route>
           <Route exact path={["/", "/list"]}>
-            <ReminderList setReminders={setReminders} reminders={reminders}/>
+            <UpperSpace>
+              <ReminderList setReminders={setReminders} reminders={reminders}/>
+              </UpperSpace>
           </Route>
           <Route>
             <p>404</p>
@@ -96,20 +102,26 @@ function App() {
 
 export default App;
 
-const Page = styled.div``
+const Page = styled.div`
+  margin: -8px;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("https://thevitiligocoach.com/background.jpg");
+`
 
 const Style = styled.div`
   margin: 0px auto 0px auto;
   box-shadow: 4px 4px 8px 0px rgba(0,0,0,0.4);
-  background-color: rgb(245, 238,220);
+  background-color: rgb(245, 238, 220);
   border-radius: 2%;
   margin: auto;
   width: 55vw;
   font-size: 25px;
   min-height: 200px;
 `
-const CalenderContainer = styled.div`
-margin-top: 70px;
+const UpperSpace = styled.div`
+  margin-top: 70px;
+  padding: 20px 40px;
 `
 // import
 // NavBar

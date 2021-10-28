@@ -50,8 +50,8 @@ export default Reminder;
 const Button = styled.button`
     background-color: transparent;
     color: inherit;
-	border: 1px solid black;
-	padding: 0;
+	border: 1px solid gray;
+	padding: 0px 5px 0px 5px;
 	font: inherit;
 	cursor: pointer;
 `
