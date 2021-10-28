@@ -14,18 +14,16 @@ function NavBar() {
 export default NavBar;
 
 const List = styled.ul`
-    margin-top: 0px;
-    border: 1px solid black;
+    width: 98%;
+    margin: 0px auto 0px auto;
     display: flex;
     justify-content: space-evenly;
     background-color: orange;
     padding: 8px;
-    width: 100%;
-    box-shadow: 4px 4px 8px 0px rgba(0,0,0,0.4);
+    box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.4);
     a{
         box-shadow:inset 0px 1px 0px -38px #ebebeb;
-        background-color:transparent;
-        border:1px solid #000000;
+        background-color:#ABC01D;
         display:inline-block;
         cursor:pointer;
         color:#000000;
@@ -34,9 +32,10 @@ const List = styled.ul`
         font-weight:bold;
         padding:6px 24px;
         text-decoration:none;
+        box-shadow: 2px 2px 8px 0px rgba(0,0,0,0.4);
     }
     a:hover {
-        background-color: rgb(255, 102, 0);
+        background-color: #91a41b;
         box-shadow: 2px 2px 8px 0px rgba(0,0,0,0.4);
     }
     

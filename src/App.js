@@ -69,23 +69,27 @@ function App() {
       <Header />
       <NavBar />
       {/* <button onClick={()=>setNotification(!notification)}>show alert</button> */}
-      <Switch>
-        <Route path="/calendar">
-          <ReminderCalendar filterReminders={filterReminders}/>
-        </Route>
-        <Route path="/list/new">
-          <AddNew setReminders={setReminders} formatDate={formatDate}/>
-        </Route>
-        <Route path="/list/:id/edit">
-          <EditReminder setReminders={setReminders}/>
-        </Route>
-        <Route exact path={["/", "/list"]}>
-          <ReminderList setReminders={setReminders} reminders={reminders}/>
-        </Route>
-        <Route>
-          <p>404</p>
-        </Route>
-      </Switch>
+      <Style>
+        <Switch>
+          <Route path="/calendar">
+            <CalenderContainer>
+              <ReminderCalendar filterReminders={filterReminders}/>
+            </CalenderContainer>
+          </Route>
+          <Route path="/list/new">
+            <AddNew setReminders={setReminders} formatDate={formatDate}/>
+          </Route>
+          <Route path="/list/:id/edit">
+            <EditReminder setReminders={setReminders}/>
+          </Route>
+          <Route exact path={["/", "/list"]}>
+            <ReminderList setReminders={setReminders} reminders={reminders}/>
+          </Route>
+          <Route>
+            <p>404</p>
+          </Route>
+        </Switch>
+    </Style>
     </Page>
   );
 }
@@ -94,6 +98,19 @@ export default App;
 
 const Page = styled.div``
 
+const Style = styled.div`
+  margin: 0px auto 0px auto;
+  box-shadow: 4px 4px 8px 0px rgba(0,0,0,0.4);
+  background-color: rgb(245, 238,220);
+  border-radius: 2%;
+  margin: auto;
+  width: 55vw;
+  font-size: 25px;
+  min-height: 200px;
+`
+const CalenderContainer = styled.div`
+margin-top: 70px;
+`
 // import
 // NavBar
 // 
