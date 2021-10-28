@@ -37,12 +37,14 @@ const Style = styled.div`
         border: 1px solid rgb(245, 238, 220);
         margin: 0px;
         cursor:pointer;
+        font-size: 20px;
         :hover{
             background-color: rgba(171, 192, 29, 0.5);
         }
     }
     .react-calendar__month-view {
         margin-top: 20px;
+        font-family: 'Zen Kaku Gothic New', sans-serif;
     }
     .react-calendar__navigation {
         button {

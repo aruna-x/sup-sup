@@ -16,21 +16,6 @@
       "id": 1
     },
     {
-      "supplement": "yes",
-      "days": {
-        "Monday": false,
-        "Tuesday": true,
-        "Wednesday": false,
-        "Thursday": false,
-        "Friday": false,
-        "Saturday": false,
-        "Sunday": false
-      },
-      "times": "10:09",
-      "startDate": "2021/10/26",
-      "id": 2
-    },
-    {
       "supplement": "Test 3",
       "days": {
         "Monday": false,
