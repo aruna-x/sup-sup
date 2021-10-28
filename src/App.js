@@ -39,10 +39,14 @@ function App() {
     }
   }
 
+  function getSeletedDay(selectedDay) {
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    return days[selectedDay.getDay()];
+  }
+
   function filterReminders(selectedDay) {
     return reminders.filter((reminder) => {
-        const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-        const formattedSelectedDay = days[selectedDay.getDay()];
+      const formattedSelectedDay = getSeletedDay(selectedDay);
         if (Date.parse(reminder.startDate) > Date.parse(formatDate(selectedDay).toString())) {
             return false;
         }
@@ -62,19 +66,16 @@ function App() {
     return year + "/" + month + "/" + day;
   }
 
-  console.log(reminders)
-
   return (
     <Page>
       <Header />
       <NavBar />
-      {/* <button onClick={()=>setNotification(!notification)}>show alert</button> */}
       <Style>
         <Switch>
           <Route path="/calendar">
             <UpperSpace>
               <Title>Calendar</Title>
-              <ReminderCalendar filterReminders={filterReminders}/>
+              <ReminderCalendar filterReminders={filterReminders} reminders={reminders} getSeletedDay={getSeletedDay}/>
             </UpperSpace>
           </Route>
           <Route path="/list/new">

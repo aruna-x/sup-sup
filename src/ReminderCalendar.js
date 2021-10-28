@@ -3,21 +3,41 @@ import Calendar from 'react-calendar';
 import styled from 'styled-components';
 import ReminderList from './ReminderList';
 
-function ReminderCalendar({filterReminders}) {
+
+function ReminderCalendar({filterReminders, reminders, getSeletedDay}) {
 
     const [selectedDay, setSelectedDay] = useState(new Date());
-    console.log(selectedDay)
-
     const displayReminders = filterReminders(selectedDay);
 
-    console.log(displayReminders)
+    const findEnabledDays = () => {
+        let enabledDays = new Set();
+        reminders.map((reminder)=>{
+            if (enabledDays.size === 7) return;
+            for (let day in reminder.days) {
+                if (reminder.days[day] === true) {
+                    if (! enabledDays.has(reminder.days[day])) {
+                        enabledDays.add(day);
+                    }
+                }
+            }
+        });
+        return enabledDays;
+    }
+
+    function tileDisabled({ date, view }) {
+        // Disable tiles in month view only
+        if (view === 'month') {
+            const enabledDays = findEnabledDays();
+            return (!enabledDays.has(getSeletedDay(date)) || date < new Date( Date.now() - 24*60*60*1000));
+        }
+    }
 
     return (
         <>
             <Style>
-                <Calendar value={selectedDay} onChange={setSelectedDay} />
+                <Calendar value={selectedDay} onChange={setSelectedDay} tileDisabled={tileDisabled}/>
             </Style>
-            <ReminderList reminders={displayReminders} />
+            { displayReminders.length === 0 ? "" : <ReminderList reminders={displayReminders} /> }
         </>
     )
 }

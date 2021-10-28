@@ -69,7 +69,7 @@ function AddNew({setReminders, formatDate}) {
                 times: "10:00"
             })
         })
-        .then(r => history.push("/"))
+        .then(() => history.push("/"))
     }
     
     return (

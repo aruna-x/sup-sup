@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import TimePicker from 'react-time-picker';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 
 function EditReminder({setReminders}) {
+    let history = useHistory();
     const [formData, setFormData] = useState({
         supplement: "",
         days: {
@@ -56,10 +58,11 @@ function EditReminder({setReminders}) {
             body:JSON.stringify(formData)
         })
         .then(resp => resp.json())
-        .then(data => setReminders(current => [...current].map(reminder => (reminder.id === data.id) ? data : reminder)))
+        .then(data => {
+            setReminders(current => [...current].map(reminder => (reminder.id === data.id) ? data : reminder));
+        })
+        .then(() => history.push("/"))
     }
-
-    console.log(formData)
 
     return (
         <>

@@ -28,6 +28,10 @@ function ReminderList({reminders, setReminders}) {
 
 export default ReminderList;
 
+const Title = styled.h1`
+    text-align: center;
+`
+
 const Table = styled.table`
     min-height: 200px;
     padding-left: 30px;
