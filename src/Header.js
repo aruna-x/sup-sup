@@ -3,7 +3,7 @@ import styled from "styled-components";
 function Header() {
     return(
         <Top>
-            <Image src="https://i.imgur.com/0z4Ydpm.png"></Image>
+            <Image src="https://i.imgur.com/enOEMyY.png"></Image>
         </Top>
     );
 }
