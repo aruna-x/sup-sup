@@ -3,7 +3,7 @@ import styled from "styled-components";
 function Header() {
     return(
         <Top>
-            <Image src="https://i.imgur.com/2Y1IaIG.png"></Image>
+            <Image src="https://i.imgur.com/0z4Ydpm.png"></Image>
         </Top>
     );
 }
@@ -18,6 +18,7 @@ const Top = styled.div`
 
 
 const Image = styled.img`
-    height: 7%;
+    height: 5%;
     width:7%;
+    margin-left: 15px;
 `
