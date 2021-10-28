@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import TimePicker from 'react-time-picker';
+import styled from 'styled-components';
 
 function EditReminder({setReminders}) {
     const [formData, setFormData] = useState({
@@ -62,9 +63,10 @@ function EditReminder({setReminders}) {
 
     return (
         <>
-            <h1>Update Reminder:</h1>
-            <form onSubmit={handleSubmit}>
-                <label> Supplement: <input name="supplement" type="text" value={formData.supplement} onChange={handleChange}></input></label>
+            <Fill onSubmit={handleSubmit}>
+            <label> Supplement: <input className="sup" name="supplement" type="text" value={formData.supplement} onChange={handleChange} placeholder="ex: Steroids" required></input></label>
+            <TimePicker id="time" onChange={handleChange} value={formData.times} />
+            <CheckBox>
                 <label> <input name="Monday" type="checkbox" checked={formData.days.Monday} onChange={handleChange}></input> Monday</label>
                 <label> <input name="Tuesday" type="checkbox" checked={formData.days.Tuesday} onChange={handleChange}></input> Tuesday</label>
                 <label> <input name="Wednesday" type="checkbox" checked={formData.days.Wednesday} onChange={handleChange}></input> Wednesday</label>
@@ -72,11 +74,53 @@ function EditReminder({setReminders}) {
                 <label> <input name="Friday" type="checkbox" checked={formData.days.Friday} onChange={handleChange}></input> Friday</label>
                 <label> <input name="Saturday" type="checkbox" checked={formData.days.Saturday} onChange={handleChange}></input> Saturday</label>
                 <label> <input name="Sunday" type="checkbox" checked={formData.days.Sunday} onChange={handleChange}></input> Sunday</label>
-                <TimePicker id="time" onChange={handleChange} value={formData.times} />
-                <button type="submit">Submit</button>
-            </form>
+                </CheckBox>
+            <button className='submit' type="submit">SUBMIT</button>
+        </Fill>
         </>
     )
 }
 
 export default EditReminder;
+
+const Fill = styled.form`
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    margin: auto;
+    text-align: center;
+    .sup{
+        margin-left: 10px;
+        margin-right: 15px;
+        font-size: 17px;
+    }
+    .submit{
+        padding: 10px 15px;
+        font-size: 13px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        font-weight: 900;
+        font-family: 'Carter One', cursive;
+        letter-spacing: 2px;
+    }
+    label{
+        display: inline-flex;
+        justify-content: center;
+        margin: 13px 10px;
+    }
+    button{
+        text-align: center;
+        background-color: #ABC01D;
+        border: none;
+        padding: 5px;
+        cursor: pointer;
+        :hover{
+            background-color: rgba(171, 192, 29, 0.5);
+        }
+    }
+`
+const CheckBox = styled.div`
+    input{
+        height: 35px;
+        margin-right: 5px;
+        }
+    }
+`

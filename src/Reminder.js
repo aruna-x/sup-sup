@@ -48,10 +48,13 @@ function Reminder({reminder: {supplement, days, times, id}, setReminders}) {
 export default Reminder;
 
 const Button = styled.button`
-    background-color: transparent;
+    background-color: rgba(0,0,0,.05);
     color: inherit;
 	border: 1px solid gray;
 	padding: 0px 5px 0px 5px;
 	font: inherit;
 	cursor: pointer;
+    :hover{
+        background-color: rgba(0,0,0,.2);
+    }
 `

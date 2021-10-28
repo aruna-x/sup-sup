@@ -73,23 +73,27 @@ function App() {
         <Switch>
           <Route path="/calendar">
             <UpperSpace>
+              <Title>Calendar</Title>
               <ReminderCalendar filterReminders={filterReminders}/>
             </UpperSpace>
           </Route>
           <Route path="/list/new">
             <UpperSpace>
+              <Title>Create Reminder</Title>
               <AddNew setReminders={setReminders} formatDate={formatDate}/>
             </UpperSpace>
           </Route>
           <Route path="/list/:id/edit">
             <UpperSpace>
-            <EditReminder setReminders={setReminders}/>
+              <Title>Edit Reminder</Title>
+              <EditReminder setReminders={setReminders}/>
             </UpperSpace>
           </Route>
           <Route exact path={["/", "/list"]}>
             <UpperSpace>
+              <Title>Reminders</Title>
               <ReminderList setReminders={setReminders} reminders={reminders}/>
-              </UpperSpace>
+            </UpperSpace>
           </Route>
           <Route>
             <p>404</p>
@@ -101,6 +105,11 @@ function App() {
 }
 
 export default App;
+
+const Title = styled.h1`
+    text-align: center;
+    font-family: 'Carter One', cursive;
+`
 
 const Page = styled.div`
   margin: -8px;
@@ -118,6 +127,7 @@ const Style = styled.div`
   width: 55vw;
   font-size: 25px;
   min-height: 200px;
+  padding-bottom: 20px;
 `
 const UpperSpace = styled.div`
   margin-top: 70px;
