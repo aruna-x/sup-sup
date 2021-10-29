@@ -1,10 +1,11 @@
-import {Link} from "react-router-dom"
+// Libraries
+import { Link } from "react-router-dom"
 import styled from "styled-components";
 
 function Reminder({reminder: {supplement, days, times, id}, setReminders}) {
-    console.log();
 
     const displayDays = Object.entries(days).filter((array)=>array[1]).map(grabLetters).toString().replaceAll(",", ", ").toUpperCase()
+    const BASE_URL = `http://localhost:4000/reminders/${id}`;
 
     function grabLetters(array) {
         const day = array[0];
@@ -27,7 +28,7 @@ function Reminder({reminder: {supplement, days, times, id}, setReminders}) {
     }
 
     function handleDelete() {
-        fetch(`http://localhost:4000/reminders/${id}`, {
+        fetch(BASE_URL, {
             method: "DELETE"
         })
         .then(() => setReminders(current => current.filter((reminder) => (reminder.id !== id))))

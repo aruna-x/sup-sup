@@ -1,5 +1,9 @@
-import Reminder from './Reminder.js'
+
+// Libraries
 import styled from 'styled-components'
+
+// Components
+import Reminder from './Reminder.js'
 
 function ReminderList({reminders, setReminders}) {
     const reminderItem = reminders.map(handleMap)
@@ -27,10 +31,6 @@ function ReminderList({reminders, setReminders}) {
 
 
 export default ReminderList;
-
-const Title = styled.h1`
-    text-align: center;
-`
 
 const Table = styled.table`
     min-height: 200px;
