@@ -1,17 +1,22 @@
-import {Switch, Route} from 'react-router-dom';
-import {useState, useEffect} from "react"
+// Libraries
+import { Switch, Route } from 'react-router-dom';
+import { useState, useEffect } from "react"
+import styled from 'styled-components';
+
+// Components
 import Header from "./Header.js";
 import NavBar from "./NavBar.js";
-import EditReminder from './EditReminder.js';
-import ReminderList from './ReminderList.js';
 import ReminderCalendar from './ReminderCalendar.js';
 import AddNew from './AddNew.js';
-import styled from 'styled-components';
+import EditReminder from './EditReminder.js';
+import ReminderList from './ReminderList.js';
 
 
 function App() {
 
   const [reminders, setReminders] = useState([]);
+
+  // Use state to check whether a notification is necessary every 1 minute
   const [notification, setNotification] = useState(false);
   setTimeout(() => {setNotification(!notification)}, 60000);
 
@@ -39,11 +44,6 @@ function App() {
     }
   }
 
-  function getSeletedDay(selectedDay) {
-    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    return days[selectedDay.getDay()];
-  }
-
   function filterReminders(selectedDay) {
     return reminders.filter((reminder) => {
       const formattedSelectedDay = getSeletedDay(selectedDay);
@@ -59,8 +59,13 @@ function App() {
     })
   }
 
+  function getSeletedDay(selectedDay) {
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    return days[selectedDay.getDay()];
+  }
+
   function formatDate(dateObj) {
-    const month = dateObj.getUTCMonth() + 1; //months from 1-12
+    const month = dateObj.getUTCMonth() + 1; //months from 1-12 (shift by 1)
     const day = dateObj.getUTCDate();
     const year = dateObj.getUTCFullYear();
     return year + "/" + month + "/" + day;
@@ -81,13 +86,13 @@ function App() {
           <Route path="/list/new">
             <UpperSpace>
               <Title>Create Reminder</Title>
-              <AddNew setReminders={setReminders} formatDate={formatDate}/>
+              <AddNew setReminders={setReminders} formatDate={formatDate} setNotification={setNotification}/>
             </UpperSpace>
           </Route>
           <Route path="/list/:id/edit">
             <UpperSpace>
               <Title>Edit Reminder</Title>
-              <EditReminder setReminders={setReminders}/>
+              <EditReminder setReminders={setReminders} setNotification={setNotification}/>
             </UpperSpace>
           </Route>
           <Route exact path={["/", "/list"]}>
@@ -134,6 +139,3 @@ const UpperSpace = styled.div`
   margin-top: 70px;
   padding: 20px 40px;
 `
-// import
-// NavBar
-// 

@@ -1,18 +1,31 @@
+// Libraries
 import { useState } from 'react';
 import Calendar from 'react-calendar';
 import styled from 'styled-components';
-import ReminderList from './ReminderList';
 
+// Components
+import ReminderList from './ReminderList';
 
 function ReminderCalendar({filterReminders, reminders, getSeletedDay}) {
 
     const [selectedDay, setSelectedDay] = useState(new Date());
     const displayReminders = filterReminders(selectedDay);
 
+    function tileDisabled({ date, view }) {
+        // In month view only
+        if (view === 'month') {
+            const enabledDays = findEnabledDays();
+            // Disable tiles that don't have supplements, and any day before today
+            return (!enabledDays.has(getSeletedDay(date)) || date < new Date( Date.now() - 24*60*60*1000));
+        }
+    }
+
     const findEnabledDays = () => {
         let enabledDays = new Set();
         reminders.map((reminder)=>{
+            // Return early if all 7 days are in set
             if (enabledDays.size === 7) return;
+            // Search the days object in the current reminder from db. If already in set, return. Else place in set.
             for (let day in reminder.days) {
                 if (reminder.days[day] === true) {
                     if (! enabledDays.has(reminder.days[day])) {
@@ -22,14 +35,6 @@ function ReminderCalendar({filterReminders, reminders, getSeletedDay}) {
             }
         });
         return enabledDays;
-    }
-
-    function tileDisabled({ date, view }) {
-        // Disable tiles in month view only
-        if (view === 'month') {
-            const enabledDays = findEnabledDays();
-            return (!enabledDays.has(getSeletedDay(date)) || date < new Date( Date.now() - 24*60*60*1000));
-        }
     }
 
     return (
@@ -79,23 +84,3 @@ const Style = styled.div`
         }
     }
 `
-
-// margin: auto;
-// width: 100%;
-// text-align: center;
-// font-family: 'Zen Kaku Gothic New', sans-serif;
-// text-decoration: underline;
-// .react-calendar__month-view__days{
-//     width: 100%;
-// }
-// .react-calendar__month-view__weekdays__weekday{
-   
-// }
-// button{
-//    background-color: #ABC01D;
-//     padding: 1px;
-//     margin: 1px;
-//     :hover{
-//         background-color: green;
-//     }
-// }
