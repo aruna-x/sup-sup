@@ -16,21 +16,6 @@
       "id": 1
     },
     {
-      "supplement": "Test 3",
-      "days": {
-        "Monday": false,
-        "Tuesday": false,
-        "Wednesday": true,
-        "Thursday": false,
-        "Friday": false,
-        "Saturday": false,
-        "Sunday": false
-      },
-      "times": "15:51",
-      "startDate": "2021/10/27",
-      "id": 8
-    },
-    {
       "supplement": "Chunky Smoothie",
       "days": {
         "Monday": false,
@@ -44,51 +29,6 @@
       "times": "10:30",
       "startDate": "2021/10/28",
       "id": 9
-    },
-    {
-      "supplement": "Drugggs",
-      "days": {
-        "Monday": false,
-        "Tuesday": false,
-        "Wednesday": false,
-        "Thursday": false,
-        "Friday": true,
-        "Saturday": false,
-        "Sunday": true
-      },
-      "times": "09:00",
-      "startDate": "2021/10/28",
-      "id": 10
-    },
-    {
-      "supplement": "Test",
-      "days": {
-        "Monday": false,
-        "Tuesday": false,
-        "Wednesday": false,
-        "Thursday": true,
-        "Friday": false,
-        "Saturday": false,
-        "Sunday": false
-      },
-      "times": "16:03",
-      "startDate": "2021/10/28",
-      "id": 11
-    },
-    {
-      "supplement": "Testttttt",
-      "days": {
-        "Monday": false,
-        "Tuesday": false,
-        "Wednesday": false,
-        "Thursday": true,
-        "Friday": false,
-        "Saturday": false,
-        "Sunday": false
-      },
-      "times": "16:23",
-      "startDate": "2021/10/28",
-      "id": 12
     }
   ]
 }
